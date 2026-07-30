@@ -45,3 +45,34 @@ button:hover{
     margin-top:10px;
     border-radius:8px;
 }
+.deleteBtn{
+    background:#e74c3c;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.deleteBtn:hover{
+    background:#c0392b;
+}
+.completed{
+    text-decoration: line-through;
+    color: green;
+}
+
+.completeBtn{
+    background:#2ecc71;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.completeBtn:hover{
+    background:#27ae60;
+}

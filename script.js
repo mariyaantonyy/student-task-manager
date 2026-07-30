@@ -34,6 +34,41 @@ addBtn.addEventListener("click", function(){
     dueDate.value = "";
 
 });
+taskList.addEventListener("click", function(e){
+    if(e.target.classList.contains("completeBtn")){
+
+    const card = e.target.parentElement;
+
+    const id = Number(card.dataset.id);
+
+    const task = tasks.find(function(item){
+        return item.id === id;
+    });
+
+    task.completed = !task.completed;
+
+    displayTasks();
+
+    return;
+}
+
+    if(e.target.classList.contains("deleteBtn")){
+
+        const card = e.target.parentElement;
+
+        const id = Number(card.dataset.id);
+
+        tasks = tasks.filter(function(task){
+
+            return task.id !== id;
+
+        });
+
+        displayTasks();
+
+    }
+
+});
 function displayTasks(){
 
     taskList.innerHTML = "";
@@ -48,13 +83,21 @@ function displayTasks(){
         taskList.innerHTML += `
         <div class="task-item" data-id="${task.id}">
 
-            <h3>${task.task}</h3>
+           <h3 class="${task.completed ? 'completed' : ''}">
+    ${task.task}
+</h3>
 
             <p><strong>Priority:</strong> ${task.priority}</p>
 
-            <p><strong>Due Date:</strong> ${task.dueDate}</p>
+         <p><strong>Due Date:</strong> ${task.dueDate}</p>
 
-        </div>
+<button class="completeBtn">
+    ${task.completed ? "↩ Undo" : "✔ Complete"}
+</button>
+
+<button class="deleteBtn">🗑 Delete</button>
+
+</div>   
         `;
 
     });
