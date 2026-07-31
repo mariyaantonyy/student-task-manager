@@ -44,12 +44,19 @@
 
 
 </div>
+ <button id="addBtn" type="button">
+            Add Task
+        </button>
 <input
     type="text"
  id="searchTask"placeholder="🔍 Search tasks...">
-        <button id="addBtn" type="button">
-            Add Task
-        </button>
+ <select id="filterPriority">
+    <option value="All">All Priorities</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+</select>
+       
 
         <div id="taskList">
             No tasks yet.

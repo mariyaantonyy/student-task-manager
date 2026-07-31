@@ -1,4 +1,5 @@
 // Get HTML elements
+const filterPriority = document.getElementById("filterPriority");
 const searchTask = document.getElementById("searchTask");
 const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
@@ -187,6 +188,26 @@ searchTask.addEventListener("keyup", function(){
             card.style.display = "block";
         }
         else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+filterPriority.addEventListener("change", function(){
+
+    const selected = filterPriority.value;
+
+    const cards = document.querySelectorAll(".task-item");
+
+    cards.forEach(function(card){
+
+        const priorityText = card.querySelector("p").textContent;
+        const priority = priorityText.replace("Priority:", "").trim();
+
+        if(selected === "All" || priority === selected){
+            card.style.display = "";
+        }else{
             card.style.display = "none";
         }
 
