@@ -1,4 +1,5 @@
 // Get HTML elements
+const searchTask = document.getElementById("searchTask");
 const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
 const pendingTasks = document.getElementById("pendingTasks");
@@ -171,3 +172,24 @@ taskList.addEventListener("click", function(e){
 
 // Show tasks when page loads
 displayTasks();
+searchTask.addEventListener("keyup", function(){
+
+    const value = searchTask.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".task-item");
+
+    cards.forEach(function(card){
+
+        const taskName =
+        card.querySelector("h3").textContent.toLowerCase();
+
+        if(taskName.includes(value)){
+            card.style.display = "block";
+        }
+        else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
