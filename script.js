@@ -1,4 +1,5 @@
 // Get HTML elements
+const sortTasks = document.getElementById("sortTasks");
 const filterPriority = document.getElementById("filterPriority");
 const searchTask = document.getElementById("searchTask");
 const totalTasks = document.getElementById("totalTasks");
@@ -52,7 +53,12 @@ function displayTasks() {
                 ${task.task}
             </h3>
 
-            <p><strong>Priority:</strong> ${task.priority}</p>
+           <p>
+    Priority:
+    <span class="priority ${task.priority.toLowerCase()}">
+        ${task.priority}
+    </span>
+</p>
 
             <p><strong>Due Date:</strong> ${task.dueDate}</p>
 
@@ -212,5 +218,27 @@ filterPriority.addEventListener("change", function(){
         }
 
     });
+
+});
+sortTasks.addEventListener("change", function(){
+
+    if(sortTasks.value === "nearest"){
+
+        tasks.sort(function(a,b){
+            return new Date(a.dueDate) - new Date(b.dueDate);
+        });
+
+    }
+
+    else if(sortTasks.value === "farthest"){
+
+        tasks.sort(function(a,b){
+            return new Date(b.dueDate) - new Date(a.dueDate);
+        });
+
+    }
+
+    displayTasks();
+    saveTasks();
 
 });

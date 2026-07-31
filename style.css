@@ -133,3 +133,30 @@ button:hover{
     border:1px solid #ccc;
     border-radius:8px;
 }
+#sortTasks{
+    width:100%;
+    padding:12px;
+    margin:15px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+.priority{
+    padding:5px 12px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.high{
+    background:red;
+}
+
+.medium{
+    background:orange;
+}
+
+.low{
+    background:green;
+}
