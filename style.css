@@ -203,3 +203,25 @@ body.dark .card{
 body.dark button{
     color:white;
 }
+.status{
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.status:contains("Overdue"){
+    color:red;
+}
+.overdue{
+    color:red;
+    font-weight:bold;
+}
+
+.today{
+    color:orange;
+    font-weight:bold;
+}
+
+.upcoming{
+    color:green;
+    font-weight:bold;
+}

@@ -34,16 +34,38 @@ let editId = null;
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+function getStatus(date){
 
+    const today = new Date();
+
+    today.setHours(0,0,0,0);
+
+    const due = new Date(date);
+
+    due.setHours(0,0,0,0);
+
+    if(due.getTime() === today.getTime()){
+        return "🟡 Due Today";
+    }
+
+    if(due < today){
+        return "🔴 Overdue";
+    }
+
+    return "🟢 Upcoming";
+
+}
 // Display tasks
 function displayTasks() {
 
     taskList.innerHTML = "";
 
-    if (tasks.length === 0) {
-        taskList.innerHTML = "No tasks yet.";
-        return;
-    }
+  if (tasks.length === 0) {
+    taskList.innerHTML = "No tasks yet.";
+    updateDashboard();
+    return;
+}
+    
 
     tasks.forEach(function(task){
 
@@ -63,6 +85,10 @@ function displayTasks() {
 
             <p><strong>Due Date:</strong> ${task.dueDate}</p>
 
+<p class="${getStatusClass(task.dueDate)}">
+    ${getStatus(task.dueDate)}
+</p>
+
             <button class="completeBtn">
                 ${task.completed ? "↩ Undo" : "✔ Complete"}
             </button>
@@ -76,8 +102,9 @@ function displayTasks() {
 
     });
 
-}
+
 updateDashboard();
+}
 
 // Add / Update Task
 addBtn.addEventListener("click", function(){
@@ -250,17 +277,37 @@ if(savedTheme === "dark"){
     themeBtn.textContent = "☀️ Light Mode";
 }
 
-themeBtn.addEventListener("click", function(){
+themeBtn.addEventListener("click", function () {
 
     document.body.classList.toggle("dark");
 
     if(document.body.classList.contains("dark")){
         localStorage.setItem("theme","dark");
-        themeBtn.textContent = "☀️ Light Mode";
-    }
-    else{
+        themeBtn.textContent="☀️ Light Mode";
+    }else{
         localStorage.setItem("theme","light");
-        themeBtn.textContent = "🌙 Dark Mode";
+        themeBtn.textContent="🌙 Dark Mode";
     }
 
 });
+function getStatusClass(date){
+
+    const today = new Date();
+
+    today.setHours(0,0,0,0);
+
+    const due = new Date(date);
+
+    due.setHours(0,0,0,0);
+
+    if(due.getTime() === today.getTime()){
+        return "today";
+    }
+
+    if(due < today){
+        return "overdue";
+    }
+
+    return "upcoming";
+
+}
