@@ -160,3 +160,46 @@ button:hover{
 .low{
     background:green;
 }
+#themeBtn{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border:none;
+    background:#222;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#themeBtn:hover{
+    background:#444;
+}
+body.dark{
+    background:#121212;
+    color:white;
+}
+
+body.dark .container{
+    background:#1f1f1f;
+}
+
+body.dark input,
+body.dark select{
+    background:#2d2d2d;
+    color:white;
+    border:1px solid #555;
+}
+
+body.dark .task-item{
+    background:#2a2a2a;
+}
+
+body.dark .card{
+    background:#2a2a2a;
+    color:white;
+}
+
+body.dark button{
+    color:white;
+}
